@@ -146,10 +146,10 @@ const Portfolio: React.FC = () => {
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
                 >
-                    {/* Prev Button (Right side in RTL) */}
+                    {/* Next Button (Right side) */}
                     <button 
-                        onClick={prevItem}
-                        aria-label="ההמלצה הקודמת"
+                        onClick={nextItem}
+                        aria-label="ההמלצה הבאה"
                         className="hidden sm:flex z-20 items-center justify-center w-12 h-12 rounded-full bg-white text-stone-700 shadow-md hover:bg-[#5B8276] hover:text-white transition-all duration-300 transform -translate-x-3 hover:scale-110 shrink-0 border border-stone-200"
                     >
                         <ChevronRightIcon className="w-6 h-6" />
@@ -184,10 +184,10 @@ const Portfolio: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Next Button (Left side in RTL) */}
+                    {/* Prev Button (Left side) */}
                     <button 
-                        onClick={nextItem}
-                        aria-label="ההמלצה הבאה"
+                        onClick={prevItem}
+                        aria-label="ההמלצה הקודמת"
                         className="hidden sm:flex z-20 items-center justify-center w-12 h-12 rounded-full bg-white text-stone-700 shadow-md hover:bg-[#5B8276] hover:text-white transition-all duration-300 transform translate-x-3 hover:scale-110 shrink-0 border border-stone-200"
                     >
                         <ChevronLeftIcon className="w-6 h-6" />
@@ -195,17 +195,18 @@ const Portfolio: React.FC = () => {
                 </div>
 
                 {/* Mobile Navigation Controls & Dots */}
-                <div className="mt-8 flex items-center justify-center gap-6">
+                <div dir="ltr" className="mt-8 flex items-center justify-center gap-6">
+                    {/* Left Button -> Prev */}
                     <button 
                         onClick={prevItem}
                         aria-label="ההמלצה הקודמת"
                         className="sm:hidden p-2.5 rounded-full bg-white text-stone-700 shadow-sm border border-stone-200 active:bg-[#5B8276] active:text-white transition"
                     >
-                        <ChevronRightIcon className="w-5 h-5" />
+                        <ChevronLeftIcon className="w-5 h-5" />
                     </button>
 
-                    {/* Dot Indicators - set to dir="ltr" so dot moves in opposite direction of finger swipe */}
-                    <div dir="ltr" className="flex items-center space-x-3">
+                    {/* Dot Indicators */}
+                    <div className="flex items-center space-x-3">
                         {TESTIMONIALS.map((_, index) => (
                             <button 
                                 key={index}
@@ -216,12 +217,13 @@ const Portfolio: React.FC = () => {
                         ))}
                     </div>
 
+                    {/* Right Button -> Next */}
                     <button 
                         onClick={nextItem}
                         aria-label="ההמלצה הבאה"
                         className="sm:hidden p-2.5 rounded-full bg-white text-stone-700 shadow-sm border border-stone-200 active:bg-[#5B8276] active:text-white transition"
                     >
-                        <ChevronLeftIcon className="w-5 h-5" />
+                        <ChevronRightIcon className="w-5 h-5" />
                     </button>
                 </div>
             </div>
