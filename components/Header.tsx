@@ -81,7 +81,7 @@ const Header: React.FC<HeaderProps> = ({ onHomeClick, onAboutClick, onPortfolioC
                 <div className="container mx-auto px-6 py-4 flex justify-between items-center">
                     <div className="flex items-center gap-x-3 cursor-pointer" onClick={onHomeClick}>
                         <BoltIcon className="w-7 h-7 text-yellow-400" />
-                        <span className="text-2xl font-bold text-white">טל הנדסת חשמל</span>
+                        <span className="text-2xl font-bold text-white">CBT</span>
                     </div>
 
                     {/* Desktop Navigation */}

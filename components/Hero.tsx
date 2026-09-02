@@ -9,7 +9,7 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
         <section className="relative h-screen flex items-center justify-center text-center text-white bg-cover bg-center" style={{ backgroundImage: "url('https://picsum.photos/seed/hero/1920/1080')" }}>
             <div className="absolute inset-0 bg-black opacity-60"></div>
             <div className="relative z-10 p-8">
-                <h1 className="text-5xl md:text-7xl font-extrabold mb-4 drop-shadow-lg">טל הנדסת חשמל</h1>
+                <h1 className="text-5xl md:text-7xl font-extrabold mb-4 drop-shadow-lg">CBT</h1>
                 <p className="text-2xl md:text-3xl font-light mb-8 drop-shadow-md">ארבל טל | מהנדס חשמל, תכנון וייעוץ</p>
                 <button 
                     onClick={onContactClick}
