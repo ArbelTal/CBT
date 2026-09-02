@@ -58,7 +58,6 @@ const ChevronRightIcon: React.FC<{ className?: string }> = ({ className }) => (
 
 const Portfolio: React.FC = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [isHovered, setIsHovered] = useState(false);
     
     // Refs for touch handling
     const touchStartX = useRef(0);
@@ -74,15 +73,6 @@ const Portfolio: React.FC = () => {
         if (TESTIMONIALS.length === 0) return;
         setCurrentIndex((prevIndex) => (prevIndex - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
     };
-
-    // Optional auto-slide every 6 seconds if not hovered
-    useEffect(() => {
-        if (isHovered || TESTIMONIALS.length <= 1) return;
-        const timer = setInterval(() => {
-            nextItem();
-        }, 6000);
-        return () => clearInterval(timer);
-    }, [isHovered, currentIndex]);
 
     const handleTouchStart = (e: React.TouchEvent) => {
         touchStartX.current = e.touches[0].clientX;
@@ -141,11 +131,7 @@ const Portfolio: React.FC = () => {
                 {sectionHeader}
 
                 {/* Smooth Sliding Carousel Container */}
-                <div 
-                    className="relative flex items-center justify-center"
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
-                >
+                <div className="relative flex items-center justify-center">
                     {/* Next Button (Right side) */}
                     <button 
                         onClick={nextItem}
