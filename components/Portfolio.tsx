@@ -204,8 +204,8 @@ const Portfolio: React.FC = () => {
                         <ChevronRightIcon className="w-5 h-5" />
                     </button>
 
-                    {/* Dot Indicators */}
-                    <div className="flex space-x-3 rtl:space-x-reverse">
+                    {/* Dot Indicators - set to dir="ltr" so dot moves in opposite direction of finger swipe */}
+                    <div dir="ltr" className="flex items-center space-x-3">
                         {TESTIMONIALS.map((_, index) => (
                             <button 
                                 key={index}
