@@ -75,15 +75,15 @@ const Header: React.FC<HeaderProps> = ({ onHomeClick, onAboutClick, onPortfolioC
         }, 300);
     };
     
-    const navLinkClasses = "cursor-pointer text-stone-100 hover:text-[#D49A76] transition-colors duration-300 text-lg font-medium";
+    const navLinkClasses = "cursor-pointer text-stone-700 hover:text-[#C98A68] transition-colors duration-300 text-base font-semibold";
     
     return (
         <>
-            <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled || isMenuOpen ? 'bg-[#243732]/95 backdrop-blur-md shadow-md border-b border-white/10' : 'bg-transparent'}`}>
-                <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-                    <div className="flex items-center gap-x-3 cursor-pointer" onClick={onHomeClick}>
-                        <LotusIcon className="w-8 h-8 text-[#D49A76]" />
-                        <span className="text-2xl font-bold text-white tracking-wide">CBT</span>
+            <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#FAF7F2]/95 backdrop-blur-md shadow-sm border-b border-stone-200/80">
+                <div className="container mx-auto px-6 py-3.5 flex justify-between items-center">
+                    <div className="flex items-center gap-x-2.5 cursor-pointer" onClick={onHomeClick}>
+                        <LotusIcon className="w-8 h-8 text-[#C98A68]" />
+                        <span className="text-2xl font-bold text-stone-800 tracking-wide">CBT</span>
                     </div>
 
                     {/* Desktop Navigation */}
@@ -95,7 +95,7 @@ const Header: React.FC<HeaderProps> = ({ onHomeClick, onAboutClick, onPortfolioC
 
                     {/* Mobile Menu Button */}
                     <div className="md:hidden">
-                        <button onClick={() => setIsMenuOpen(true)} className="text-white p-2" aria-label="פתח תפריט">
+                        <button onClick={() => setIsMenuOpen(true)} className="text-stone-700 p-2 hover:text-[#C98A68] transition" aria-label="פתח תפריט">
                             <MenuIcon className="w-7 h-7"/>
                         </button>
                     </div>
@@ -107,29 +107,29 @@ const Header: React.FC<HeaderProps> = ({ onHomeClick, onAboutClick, onPortfolioC
                 role="button"
                 tabIndex={0}
                 aria-label="סגור תפריט"
-                className={`fixed inset-0 bg-stone-900/60 backdrop-blur-sm z-40 transition-opacity duration-300 md:hidden ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+                className={`fixed inset-0 bg-stone-900/40 backdrop-blur-sm z-40 transition-opacity duration-300 md:hidden ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
                 onClick={() => setIsMenuOpen(false)}
             />
 
             {/* Mobile Menu Panel */}
-            <div className={`fixed top-0 right-0 h-full w-2/3 max-w-[240px] bg-[#1E2E2A]/95 backdrop-blur-xl shadow-2xl border-l border-white/10 z-50 transform transition-transform duration-300 ease-in-out md:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'} rounded-l-2xl`}>
-                 <div className="p-6 flex justify-between items-center border-b border-white/10">
-                    <span className="text-xl font-bold text-white">תפריט</span>
-                    <button onClick={() => setIsMenuOpen(false)} className="text-white p-2" aria-label="סגור תפריט">
-                        <CloseIcon className="w-7 h-7"/>
+            <div className={`fixed top-0 right-0 h-full w-2/3 max-w-[240px] bg-[#FAF7F2]/98 backdrop-blur-xl shadow-2xl border-l border-stone-200/80 z-50 transform transition-transform duration-300 ease-in-out md:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'} rounded-l-2xl text-right`}>
+                 <div className="p-5 flex justify-between items-center border-b border-stone-200/60">
+                    <span className="text-xl font-bold text-stone-800">תפריט</span>
+                    <button onClick={() => setIsMenuOpen(false)} className="text-stone-700 p-2 hover:text-[#C98A68] transition" aria-label="סגור תפריט">
+                        <CloseIcon className="w-6 h-6"/>
                     </button>
                 </div>
-                <nav className="flex flex-col p-6 space-y-4">
-                    <button onClick={() => handleLinkClick(onAboutClick)} className={`${navLinkClasses} text-right py-2 flex items-center justify-start gap-x-4 w-full`}>
-                        <AboutIcon className="w-6 h-6"/>
+                <nav className="flex flex-col p-5 space-y-2">
+                    <button onClick={() => handleLinkClick(onAboutClick)} className={`${navLinkClasses} text-right py-2.5 px-3 rounded-xl hover:bg-stone-100 flex items-center justify-start gap-x-3 w-full`}>
+                        <AboutIcon className="w-5 h-5 text-[#C98A68]"/>
                         <span>אודות</span>
                     </button>
-                    <button onClick={() => handleLinkClick(onPortfolioClick)} className={`${navLinkClasses} text-right py-2 flex items-center justify-start gap-x-4 w-full`}>
-                        <PortfolioIcon className="w-6 h-6"/>
+                    <button onClick={() => handleLinkClick(onPortfolioClick)} className={`${navLinkClasses} text-right py-2.5 px-3 rounded-xl hover:bg-stone-100 flex items-center justify-start gap-x-3 w-full`}>
+                        <PortfolioIcon className="w-5 h-5 text-[#C98A68]"/>
                         <span>המלצות</span>
                     </button>
-                    <button onClick={() => handleLinkClick(onContactClick)} className={`${navLinkClasses} text-right py-2 flex items-center justify-start gap-x-4 w-full`}>
-                        <ContactIcon className="w-6 h-6"/>
+                    <button onClick={() => handleLinkClick(onContactClick)} className={`${navLinkClasses} text-right py-2.5 px-3 rounded-xl hover:bg-stone-100 flex items-center justify-start gap-x-3 w-full`}>
+                        <ContactIcon className="w-5 h-5 text-[#C98A68]"/>
                         <span>צור קשר</span>
                     </button>
                 </nav>
