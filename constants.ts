@@ -59,5 +59,5 @@ export const PROJECTS: Project[] = [
   },
 ];
 
-export const CONTACT_PHONE = '052-8698705';
-export const CONTACT_EMAIL = 'rbell.t@gmail.com';
+export const CONTACT_PHONE = '054-7202487';
+export const CONTACT_EMAIL = 'shira.zweig@gmail.com';
