@@ -9,24 +9,12 @@ const QuoteIcon: React.FC<{ className?: string }> = ({ className }) => (
     </svg>
 );
 
-// Star rating icon
-const StarIcon: React.FC<{ className?: string }> = ({ className }) => (
-    <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-        <path fillRule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clipRule="evenodd" />
-    </svg>
-);
-
 // Elegant testimonial card without images
 const TestimonialCard: React.FC<{ testimonial: Testimonial }> = ({ testimonial }) => (
     <div className="bg-white rounded-3xl shadow-sm border border-stone-200/80 p-8 sm:p-10 h-full flex flex-col justify-between transition-all duration-300 md:hover:-translate-y-1 md:hover:shadow-md text-right">
         <div>
-            <div className="flex justify-between items-center mb-6">
-                <QuoteIcon className="w-8 h-8 text-[#5B8276]/30" />
-                <div className="flex text-[#D49A76] gap-1">
-                    {[...Array(5)].map((_, i) => (
-                        <StarIcon key={i} className="w-5 h-5" />
-                    ))}
-                </div>
+            <div className="mb-5">
+                <QuoteIcon className="w-8 h-8 text-[#C98A68]/40" />
             </div>
             <p className="text-stone-700 text-base sm:text-lg leading-relaxed mb-6 font-light">
                 "{testimonial.content}"
