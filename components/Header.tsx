@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-const BoltIcon: React.FC<{className?: string}> = ({ className }) => (
+const LotusIcon: React.FC<{className?: string}> = ({ className }) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={className}>
-      <path fillRule="evenodd" d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z" clipRule="evenodd" />
+      <path d="M12 2.25c-.3 2.6-1.8 6.2-4.8 7.8 1.6 2.3 3.8 3.9 4.8 4.4 1-.5 3.2-2.1 4.8-4.4-3-1.6-4.5-5.2-4.8-7.8z" />
+      <path d="M12 15c-1.9-.9-4.8-1.9-7.2-.8.8 2.3 2.9 4.2 5.2 5 1.2.4 2.8.4 4 0 2.3-.8 4.4-2.7 5.2-5-2.4-1.1-5.3-.1-7.2.8z" opacity="0.85" />
+      <path d="M6 9.5C4.2 10.2 2.8 11.8 2.2 13.8c2.2.9 4.8.2 6.2-1.2-.9-1-1.7-2-2.4-3.1zM18 9.5c-.7 1.1-1.5 2.1-2.4 3.1 1.4 1.4 4 2.1 6.2 1.2-.6-2-2-3.6-3.8-4.3z" opacity="0.7" />
     </svg>
 );
 
@@ -73,15 +75,15 @@ const Header: React.FC<HeaderProps> = ({ onHomeClick, onAboutClick, onPortfolioC
         }, 300);
     };
     
-    const navLinkClasses = "cursor-pointer text-white hover:text-yellow-300 transition-colors duration-300 text-lg font-semibold";
+    const navLinkClasses = "cursor-pointer text-stone-100 hover:text-[#D49A76] transition-colors duration-300 text-lg font-medium";
     
     return (
         <>
-            <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled || isMenuOpen ? 'bg-gray-800 shadow-lg' : 'bg-transparent'}`}>
+            <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled || isMenuOpen ? 'bg-[#243732]/95 backdrop-blur-md shadow-md border-b border-white/10' : 'bg-transparent'}`}>
                 <div className="container mx-auto px-6 py-4 flex justify-between items-center">
                     <div className="flex items-center gap-x-3 cursor-pointer" onClick={onHomeClick}>
-                        <BoltIcon className="w-7 h-7 text-yellow-400" />
-                        <span className="text-2xl font-bold text-white">CBT</span>
+                        <LotusIcon className="w-8 h-8 text-[#D49A76]" />
+                        <span className="text-2xl font-bold text-white tracking-wide">CBT</span>
                     </div>
 
                     {/* Desktop Navigation */}
@@ -105,13 +107,13 @@ const Header: React.FC<HeaderProps> = ({ onHomeClick, onAboutClick, onPortfolioC
                 role="button"
                 tabIndex={0}
                 aria-label="סגור תפריט"
-                className={`fixed inset-0 bg-black/60 z-40 transition-opacity duration-300 md:hidden ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+                className={`fixed inset-0 bg-stone-900/60 backdrop-blur-sm z-40 transition-opacity duration-300 md:hidden ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
                 onClick={() => setIsMenuOpen(false)}
             />
 
             {/* Mobile Menu Panel */}
-            <div className={`fixed top-0 right-0 h-full w-1/2 max-w-[190px] bg-black/50 backdrop-blur-lg shadow-xl z-50 transform transition-transform duration-300 ease-in-out md:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'} rounded-l-2xl`}>
-                 <div className="p-6 flex justify-between items-center border-b border-white/20">
+            <div className={`fixed top-0 right-0 h-full w-2/3 max-w-[240px] bg-[#1E2E2A]/95 backdrop-blur-xl shadow-2xl border-l border-white/10 z-50 transform transition-transform duration-300 ease-in-out md:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'} rounded-l-2xl`}>
+                 <div className="p-6 flex justify-between items-center border-b border-white/10">
                     <span className="text-xl font-bold text-white">תפריט</span>
                     <button onClick={() => setIsMenuOpen(false)} className="text-white p-2" aria-label="סגור תפריט">
                         <CloseIcon className="w-7 h-7"/>

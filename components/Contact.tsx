@@ -24,35 +24,39 @@ const Contact: React.FC = () => {
     const whatsappNumber = CONTACT_PHONE.replace(/^0/, '972'); // Format for wa.me link
 
     return (
-        <section id="contact" className="py-20 bg-gray-800 text-white">
+        <section id="contact" className="py-24 bg-[#243732] text-white">
             <div className="container mx-auto px-6 text-center">
-                <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-white">מוזמנים לפנות אליי</h2>
+                <h2 className="text-3xl sm:text-4xl font-bold mb-3 text-white">מוזמנים לפנות אליי</h2>
+                <p className="text-stone-300 text-sm sm:text-base font-light mb-12 max-w-md mx-auto">
+                    לתיאום שיחת היכרות, התייעצות או כל שאלה – אשמח לעמוד לרשותכם
+                </p>
+
                 <div className="flex flex-row justify-center items-start gap-2 sm:gap-8 md:gap-14 w-full max-w-4xl mx-auto px-2">
                     {/* Phone Link */}
                     <a href={`tel:${CONTACT_PHONE}`} className="flex flex-col items-center group text-center flex-1">
-                        <div className="bg-yellow-500 p-3 sm:p-4 rounded-full mb-2 sm:mb-3 transition-transform duration-300 group-hover:scale-110 text-gray-900 shadow-md">
+                        <div className="bg-[#C98A68] p-3.5 sm:p-4 rounded-full mb-2.5 sm:mb-3 transition-all duration-300 group-hover:scale-110 group-hover:bg-[#B67A58] text-white shadow-lg">
                            <PhoneIconSVG className="w-5 h-5 sm:w-7 sm:h-7" />
                         </div>
                         <span className="text-xs sm:text-base md:text-lg font-bold whitespace-nowrap text-white" dir="ltr">{CONTACT_PHONE}</span>
-                        <span className="text-yellow-400 font-semibold text-[11px] sm:text-sm mt-1 whitespace-nowrap">התקשרו עכשיו</span>
+                        <span className="text-[#E7B596] font-medium text-[11px] sm:text-sm mt-1 whitespace-nowrap">התקשרו עכשיו</span>
                     </a>
 
                     {/* WhatsApp Link */}
                     <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center group text-center flex-1">
-                        <div className="bg-yellow-500 p-3 sm:p-4 rounded-full mb-2 sm:mb-3 transition-transform duration-300 group-hover:scale-110 text-gray-900 shadow-md">
+                        <div className="bg-[#4E8B7A] p-3.5 sm:p-4 rounded-full mb-2.5 sm:mb-3 transition-all duration-300 group-hover:scale-110 group-hover:bg-[#3D7364] text-white shadow-lg">
                            <WhatsAppIconSVG className="w-5 h-5 sm:w-7 sm:h-7" />
                         </div>
                         <span className="text-xs sm:text-base md:text-lg font-bold whitespace-nowrap text-white" dir="ltr">{CONTACT_PHONE}</span>
-                        <span className="text-yellow-400 font-semibold text-[11px] sm:text-sm mt-1 whitespace-nowrap">שלחו הודעה</span>
+                        <span className="text-[#A3D1C4] font-medium text-[11px] sm:text-sm mt-1 whitespace-nowrap">שלחו הודעה</span>
                     </a>
 
                     {/* Email Link */}
                     <a href={`mailto:${CONTACT_EMAIL}`} className="flex flex-col items-center group text-center flex-1">
-                        <div className="bg-yellow-500 p-3 sm:p-4 rounded-full mb-2 sm:mb-3 transition-transform duration-300 group-hover:scale-110 text-gray-900 shadow-md">
+                        <div className="bg-[#C98A68] p-3.5 sm:p-4 rounded-full mb-2.5 sm:mb-3 transition-all duration-300 group-hover:scale-110 group-hover:bg-[#B67A58] text-white shadow-lg">
                            <EnvelopeIconSVG className="w-5 h-5 sm:w-7 sm:h-7" />
                         </div>
                         <span className="text-[10px] sm:text-sm md:text-base font-bold whitespace-nowrap text-white" dir="ltr">{CONTACT_EMAIL}</span>
-                        <span className="text-yellow-400 font-semibold text-[11px] sm:text-sm mt-1 whitespace-nowrap">שלחו מייל</span>
+                        <span className="text-[#E7B596] font-medium text-[11px] sm:text-sm mt-1 whitespace-nowrap">שלחו מייל</span>
                     </a>
                 </div>
             </div>

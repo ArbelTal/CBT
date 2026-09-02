@@ -10,14 +10,17 @@ const About: React.FC = () => {
 בקליניקה נעימה, מכילה ובגובה העיניים, ניצור יחד מרחב בטוח ומותאם אישית בדרך להשגת שקט נפשי ואיכות חיים טובה יותר.`;
 
     return (
-        <section id="about" className="py-20 bg-white">
-            <div className="container mx-auto px-6 text-center max-w-4xl">
-                <h2 className="text-4xl font-bold mb-6 text-gray-800">אודות</h2>
-                <div className="w-24 h-1 bg-yellow-500 mx-auto mb-10"></div>
-                <div className="text-xl text-gray-600 leading-relaxed space-y-4">
-                    {text.split('\n').map((line, index) => (
-                        <p key={index}>{line || <br/>}</p> // Render a <br> for empty lines to create space
-                    ))}
+        <section id="about" className="py-24 bg-[#FDFBF7]">
+            <div className="container mx-auto px-6 text-center max-w-3xl">
+                <h2 className="text-4xl font-bold mb-4 text-stone-800">אודות</h2>
+                <div className="w-16 h-1 bg-[#C98A68] mx-auto mb-12 rounded-full"></div>
+                
+                <div className="bg-white/90 border border-stone-200/80 rounded-3xl p-8 sm:p-12 shadow-sm text-right">
+                    <div className="text-lg sm:text-xl text-stone-700 leading-relaxed space-y-4 font-light">
+                        {text.split('\n').map((line, index) => (
+                            <p key={index}>{line || <br/>}</p>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

@@ -2,9 +2,9 @@ import React from 'react';
 
 const Footer: React.FC = () => {
     return (
-        <footer className="bg-gray-900 text-gray-400 py-6">
-            <div className="container mx-auto px-6 text-center">
-                <p>&copy; {new Date().getFullYear()} CBT. כל הזכויות שמורות.</p>
+        <footer className="bg-[#1A2824] text-stone-400 py-8 border-t border-white/5">
+            <div className="container mx-auto px-6 text-center text-sm font-light">
+                <p>&copy; {new Date().getFullYear()} CBT - שירה צוויג | טיפול קוגניטיבי-התנהגותי. כל הזכויות שמורות.</p>
             </div>
         </footer>
     );

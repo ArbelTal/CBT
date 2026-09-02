@@ -18,24 +18,24 @@ const StarIcon: React.FC<{ className?: string }> = ({ className }) => (
 
 // Elegant testimonial card without images
 const TestimonialCard: React.FC<{ testimonial: Testimonial }> = ({ testimonial }) => (
-    <div className="bg-white rounded-2xl shadow-md border border-gray-100 p-8 h-full flex flex-col justify-between transition-all duration-300 md:hover:-translate-y-1 md:hover:shadow-xl text-right">
+    <div className="bg-white rounded-3xl shadow-sm border border-stone-200/80 p-8 sm:p-10 h-full flex flex-col justify-between transition-all duration-300 md:hover:-translate-y-1 md:hover:shadow-md text-right">
         <div>
             <div className="flex justify-between items-center mb-6">
-                <QuoteIcon className="w-8 h-8 text-yellow-500/30" />
-                <div className="flex text-yellow-400 gap-1">
+                <QuoteIcon className="w-8 h-8 text-[#5B8276]/30" />
+                <div className="flex text-[#D49A76] gap-1">
                     {[...Array(5)].map((_, i) => (
                         <StarIcon key={i} className="w-5 h-5" />
                     ))}
                 </div>
             </div>
-            <p className="text-gray-700 text-lg leading-relaxed mb-6 font-light">
+            <p className="text-stone-700 text-base sm:text-lg leading-relaxed mb-6 font-light">
                 "{testimonial.content}"
             </p>
         </div>
-        <div className="border-t border-gray-100 pt-4 mt-auto">
-            <h3 className="text-lg font-bold text-gray-900">{testimonial.name}</h3>
+        <div className="border-t border-stone-100 pt-4 mt-auto">
+            <h3 className="text-lg font-bold text-stone-900">{testimonial.name}</h3>
             {testimonial.role && (
-                <p className="text-sm font-medium text-yellow-600 mt-0.5">{testimonial.role}</p>
+                <p className="text-sm font-medium text-[#5B8276] mt-0.5">{testimonial.role}</p>
             )}
         </div>
     </div>
@@ -129,14 +129,14 @@ const Portfolio: React.FC = () => {
     // Header for Testimonials
     const sectionHeader = (
         <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-800">המלצות</h2>
-            <p className="text-xl text-gray-600 mt-3">מילים חמות ממטופלים שליוויתי בתהליך</p>
-            <div className="w-24 h-1 bg-yellow-500 mx-auto mt-5 rounded-full"></div>
+            <h2 className="text-4xl font-bold text-stone-800">המלצות</h2>
+            <p className="text-xl text-stone-600 mt-3 font-light">מילים חמות ממטופלים שליוויתי בתהליך</p>
+            <div className="w-16 h-1 bg-[#C98A68] mx-auto mt-5 rounded-full"></div>
         </div>
     );
 
     return (
-        <section id="portfolio" className="py-20 bg-gray-100 overflow-hidden">
+        <section id="portfolio" className="py-24 bg-[#F2EFEB] overflow-hidden">
             <div className="container mx-auto px-4 sm:px-6 max-w-4xl">
                 {sectionHeader}
 
@@ -150,7 +150,7 @@ const Portfolio: React.FC = () => {
                     <button 
                         onClick={prevItem}
                         aria-label="ההמלצה הקודמת"
-                        className="hidden sm:flex z-20 items-center justify-center w-12 h-12 rounded-full bg-white text-gray-800 shadow-lg hover:bg-yellow-500 hover:text-gray-900 transition-all duration-300 transform -translate-x-3 hover:scale-110 shrink-0"
+                        className="hidden sm:flex z-20 items-center justify-center w-12 h-12 rounded-full bg-white text-stone-700 shadow-md hover:bg-[#5B8276] hover:text-white transition-all duration-300 transform -translate-x-3 hover:scale-110 shrink-0 border border-stone-200"
                     >
                         <ChevronRightIcon className="w-6 h-6" />
                     </button>
@@ -162,7 +162,7 @@ const Portfolio: React.FC = () => {
                         onTouchMove={handleTouchMove}
                         onTouchEnd={handleTouchEnd}
                     >
-                        {/* Sliding Track (LTR coordinates to guarantee consistent horizontal slide) */}
+                        {/* Sliding Track */}
                         <div 
                             dir="ltr"
                             className="flex transition-transform duration-500 ease-out"
@@ -188,7 +188,7 @@ const Portfolio: React.FC = () => {
                     <button 
                         onClick={nextItem}
                         aria-label="ההמלצה הבאה"
-                        className="hidden sm:flex z-20 items-center justify-center w-12 h-12 rounded-full bg-white text-gray-800 shadow-lg hover:bg-yellow-500 hover:text-gray-900 transition-all duration-300 transform translate-x-3 hover:scale-110 shrink-0"
+                        className="hidden sm:flex z-20 items-center justify-center w-12 h-12 rounded-full bg-white text-stone-700 shadow-md hover:bg-[#5B8276] hover:text-white transition-all duration-300 transform translate-x-3 hover:scale-110 shrink-0 border border-stone-200"
                     >
                         <ChevronLeftIcon className="w-6 h-6" />
                     </button>
@@ -199,7 +199,7 @@ const Portfolio: React.FC = () => {
                     <button 
                         onClick={prevItem}
                         aria-label="ההמלצה הקודמת"
-                        className="sm:hidden p-2.5 rounded-full bg-white text-gray-800 shadow-md active:bg-yellow-500 transition"
+                        className="sm:hidden p-2.5 rounded-full bg-white text-stone-700 shadow-sm border border-stone-200 active:bg-[#5B8276] active:text-white transition"
                     >
                         <ChevronRightIcon className="w-5 h-5" />
                     </button>
@@ -211,7 +211,7 @@ const Portfolio: React.FC = () => {
                                 key={index}
                                 onClick={() => setCurrentIndex(index)}
                                 aria-label={`עבור להמלצה ${index + 1}`}
-                                className={`w-3.5 h-3.5 rounded-full transition-all duration-300 ${index === currentIndex ? 'bg-yellow-500 scale-125 w-8' : 'bg-gray-300 hover:bg-gray-400'}`}
+                                className={`h-3 rounded-full transition-all duration-300 ${index === currentIndex ? 'bg-[#C98A68] w-8' : 'w-3 bg-stone-300 hover:bg-stone-400'}`}
                             />
                         ))}
                     </div>
@@ -219,7 +219,7 @@ const Portfolio: React.FC = () => {
                     <button 
                         onClick={nextItem}
                         aria-label="ההמלצה הבאה"
-                        className="sm:hidden p-2.5 rounded-full bg-white text-gray-800 shadow-md active:bg-yellow-500 transition"
+                        className="sm:hidden p-2.5 rounded-full bg-white text-stone-700 shadow-sm border border-stone-200 active:bg-[#5B8276] active:text-white transition"
                     >
                         <ChevronLeftIcon className="w-5 h-5" />
                     </button>
