@@ -27,32 +27,32 @@ const Contact: React.FC = () => {
         <section id="contact" className="py-20 bg-gray-800 text-white">
             <div className="container mx-auto px-6 text-center">
                 <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-white">מוזמנים לפנות אליי</h2>
-                <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-14 w-full max-w-4xl mx-auto">
+                <div className="flex flex-row justify-center items-start gap-2 sm:gap-8 md:gap-14 w-full max-w-4xl mx-auto px-2">
                     {/* Phone Link */}
-                    <a href={`tel:${CONTACT_PHONE}`} className="flex flex-col items-center group text-center">
-                        <div className="bg-yellow-500 p-4 rounded-full mb-3 transition-transform duration-300 group-hover:scale-110 text-gray-900 shadow-md">
-                           <PhoneIconSVG className="w-7 h-7" />
+                    <a href={`tel:${CONTACT_PHONE}`} className="flex flex-col items-center group text-center flex-1">
+                        <div className="bg-yellow-500 p-3 sm:p-4 rounded-full mb-2 sm:mb-3 transition-transform duration-300 group-hover:scale-110 text-gray-900 shadow-md">
+                           <PhoneIconSVG className="w-5 h-5 sm:w-7 sm:h-7" />
                         </div>
-                        <span className="text-lg font-bold whitespace-nowrap text-white tracking-wide" dir="ltr">{CONTACT_PHONE}</span>
-                        <span className="text-yellow-400 font-semibold text-sm mt-1 whitespace-nowrap">התקשרו עכשיו</span>
+                        <span className="text-xs sm:text-base md:text-lg font-bold whitespace-nowrap text-white" dir="ltr">{CONTACT_PHONE}</span>
+                        <span className="text-yellow-400 font-semibold text-[11px] sm:text-sm mt-1 whitespace-nowrap">התקשרו עכשיו</span>
                     </a>
 
                     {/* WhatsApp Link */}
-                    <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center group text-center">
-                        <div className="bg-yellow-500 p-4 rounded-full mb-3 transition-transform duration-300 group-hover:scale-110 text-gray-900 shadow-md">
-                           <WhatsAppIconSVG className="w-7 h-7" />
+                    <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center group text-center flex-1">
+                        <div className="bg-yellow-500 p-3 sm:p-4 rounded-full mb-2 sm:mb-3 transition-transform duration-300 group-hover:scale-110 text-gray-900 shadow-md">
+                           <WhatsAppIconSVG className="w-5 h-5 sm:w-7 sm:h-7" />
                         </div>
-                        <span className="text-lg font-bold whitespace-nowrap text-white tracking-wide" dir="ltr">{CONTACT_PHONE}</span>
-                        <span className="text-yellow-400 font-semibold text-sm mt-1 whitespace-nowrap">שלחו הודעה</span>
+                        <span className="text-xs sm:text-base md:text-lg font-bold whitespace-nowrap text-white" dir="ltr">{CONTACT_PHONE}</span>
+                        <span className="text-yellow-400 font-semibold text-[11px] sm:text-sm mt-1 whitespace-nowrap">שלחו הודעה</span>
                     </a>
 
                     {/* Email Link */}
-                    <a href={`mailto:${CONTACT_EMAIL}`} className="flex flex-col items-center group text-center">
-                        <div className="bg-yellow-500 p-4 rounded-full mb-3 transition-transform duration-300 group-hover:scale-110 text-gray-900 shadow-md">
-                           <EnvelopeIconSVG className="w-7 h-7" />
+                    <a href={`mailto:${CONTACT_EMAIL}`} className="flex flex-col items-center group text-center flex-1">
+                        <div className="bg-yellow-500 p-3 sm:p-4 rounded-full mb-2 sm:mb-3 transition-transform duration-300 group-hover:scale-110 text-gray-900 shadow-md">
+                           <EnvelopeIconSVG className="w-5 h-5 sm:w-7 sm:h-7" />
                         </div>
-                        <span className="text-lg font-bold whitespace-nowrap text-white tracking-wide" dir="ltr">{CONTACT_EMAIL}</span>
-                        <span className="text-yellow-400 font-semibold text-sm mt-1 whitespace-nowrap">שלחו מייל</span>
+                        <span className="text-[10px] sm:text-sm md:text-base font-bold whitespace-nowrap text-white" dir="ltr">{CONTACT_EMAIL}</span>
+                        <span className="text-yellow-400 font-semibold text-[11px] sm:text-sm mt-1 whitespace-nowrap">שלחו מייל</span>
                     </a>
                 </div>
             </div>

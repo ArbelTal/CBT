@@ -43,24 +43,27 @@ const TestimonialCard: React.FC<{ testimonial: Testimonial }> = ({ testimonial }
 
 
 
+// Icon components for carousel navigation
+const ChevronLeftIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className={className}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+  </svg>
+);
+
+const ChevronRightIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className={className}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+  </svg>
+);
+
 const Portfolio: React.FC = () => {
-    const [isMobile, setIsMobile] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [isHovered, setIsHovered] = useState(false);
     
-    // Refs for robust touch handling
+    // Refs for touch handling
     const touchStartX = useRef(0);
     const touchStartY = useRef(0);
     const isSwiping = useRef(false);
-
-    // Check for mobile on mount and resize
-    useEffect(() => {
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth < 768);
-        };
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-        return () => window.removeEventListener('resize', checkMobile);
-    }, []);
 
     const nextItem = () => {
         if (TESTIMONIALS.length === 0) return;
@@ -72,10 +75,19 @@ const Portfolio: React.FC = () => {
         setCurrentIndex((prevIndex) => (prevIndex - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
     };
 
+    // Optional auto-slide every 6 seconds if not hovered
+    useEffect(() => {
+        if (isHovered || TESTIMONIALS.length <= 1) return;
+        const timer = setInterval(() => {
+            nextItem();
+        }, 6000);
+        return () => clearInterval(timer);
+    }, [isHovered, currentIndex]);
+
     const handleTouchStart = (e: React.TouchEvent) => {
         touchStartX.current = e.touches[0].clientX;
         touchStartY.current = e.touches[0].clientY;
-        isSwiping.current = false; // Reset on new touch
+        isSwiping.current = false;
     };
 
     const handleTouchMove = (e: React.TouchEvent) => {
@@ -86,10 +98,8 @@ const Portfolio: React.FC = () => {
         const diffX = touchStartX.current - currentX;
         const diffY = touchStartY.current - currentY;
         
-        // Determine if horizontal movement is dominant, which indicates a swipe.
-        if (Math.abs(diffX) > Math.abs(diffY)) {
+        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 10) {
             isSwiping.current = true;
-            e.preventDefault();
         }
     };
 
@@ -102,13 +112,13 @@ const Portfolio: React.FC = () => {
 
         const touchEndX = e.changedTouches[0].clientX;
         const diffX = touchStartX.current - touchEndX;
-        const swipeThreshold = 50;
+        const swipeThreshold = 40;
 
-        // Flipped for RTL: swipe left shows previous, swipe right shows next
+        // Flipped for RTL: swipe left (finger right to left) -> next; swipe right -> prev
         if (diffX > swipeThreshold) {
-            prevItem();
-        } else if (diffX < -swipeThreshold) {
             nextItem();
+        } else if (diffX < -swipeThreshold) {
+            prevItem();
         }
         
         touchStartX.current = 0;
@@ -118,65 +128,102 @@ const Portfolio: React.FC = () => {
     
     // Header for Testimonials
     const sectionHeader = (
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-800">המלצות</h2>
-            <p className="text-xl text-gray-600 mt-4">מילים חמות ממטופלים שליוויתי בתהליך</p>
-            <div className="w-24 h-1 bg-yellow-500 mx-auto mt-6 rounded-full"></div>
+            <p className="text-xl text-gray-600 mt-3">מילים חמות ממטופלים שליוויתי בתהליך</p>
+            <div className="w-24 h-1 bg-yellow-500 mx-auto mt-5 rounded-full"></div>
         </div>
     );
 
     return (
-        <section id="portfolio" className="py-20 bg-gray-100">
-            <div className="container mx-auto px-6 max-w-6xl">
+        <section id="portfolio" className="py-20 bg-gray-100 overflow-hidden">
+            <div className="container mx-auto px-4 sm:px-6 max-w-4xl">
                 {sectionHeader}
-                
-                {isMobile ? (
-                    // Mobile Carousel View
-                    <div className="relative w-full max-w-md mx-auto" role="region" aria-label="קרוסלת המלצות">
+
+                {/* Smooth Sliding Carousel Container */}
+                <div 
+                    className="relative flex items-center justify-center"
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                >
+                    {/* Prev Button (Right side in RTL) */}
+                    <button 
+                        onClick={prevItem}
+                        aria-label="ההמלצה הקודמת"
+                        className="hidden sm:flex z-20 items-center justify-center w-12 h-12 rounded-full bg-white text-gray-800 shadow-lg hover:bg-yellow-500 hover:text-gray-900 transition-all duration-300 transform -translate-x-3 hover:scale-110 shrink-0"
+                    >
+                        <ChevronRightIcon className="w-6 h-6" />
+                    </button>
+
+                    {/* Sliding Viewport */}
+                    <div 
+                        className="w-full overflow-hidden px-2 sm:px-4 py-4"
+                        onTouchStart={handleTouchStart}
+                        onTouchMove={handleTouchMove}
+                        onTouchEnd={handleTouchEnd}
+                    >
+                        {/* Sliding Track (LTR coordinates to guarantee consistent horizontal slide) */}
                         <div 
-                            className="relative min-h-[360px] overflow-hidden"
-                            onTouchStart={handleTouchStart}
-                            onTouchMove={handleTouchMove}
-                            onTouchEnd={handleTouchEnd}
+                            dir="ltr"
+                            className="flex transition-transform duration-500 ease-out"
+                            style={{
+                                transform: `translateX(-${currentIndex * 100}%)`,
+                            }}
                         >
-                           {TESTIMONIALS.map((item, index) => (
+                            {TESTIMONIALS.map((item) => (
                                 <div 
                                     key={item.id} 
-                                    aria-hidden={index !== currentIndex}
-                                    className="absolute inset-0 transition-all duration-500 ease-in-out"
-                                    style={{
-                                        transform: `translateX(${(currentIndex - index) * 100}%) scale(${index === currentIndex ? 1 : 0.9})`,
-                                        opacity: index === currentIndex ? 1 : 0,
-                                        pointerEvents: index === currentIndex ? 'auto' : 'none',
-                                    }}
+                                    dir="rtl"
+                                    className="w-full shrink-0 px-2 sm:px-4 flex justify-center"
                                 >
-                                    <TestimonialCard testimonial={item} />
+                                    <div className="w-full max-w-2xl">
+                                        <TestimonialCard testimonial={item} />
+                                    </div>
                                 </div>
-                           ))}
-                        </div>
-                        
-                        {/* Dot Indicators */}
-                        <div className="mt-8 flex justify-center space-x-3 rtl:space-x-reverse">
-                             {TESTIMONIALS.map((_, index) => (
-                                <button 
-                                    key={index}
-                                    onClick={() => setCurrentIndex(index)}
-                                    aria-label={`עבור להמלצה ${index + 1}`}
-                                    className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex ? 'bg-yellow-500 scale-125' : 'bg-gray-300 hover:bg-gray-400'}`}
-                                />
                             ))}
                         </div>
                     </div>
-                ) : (
-                    // Desktop Grid View
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-                        {TESTIMONIALS.map((item, index) => (
-                             <div key={item.id} className="animate-grow-in" style={{ animationDelay: `${index * 120}ms` }}>
-                                <TestimonialCard testimonial={item} />
-                            </div>
+
+                    {/* Next Button (Left side in RTL) */}
+                    <button 
+                        onClick={nextItem}
+                        aria-label="ההמלצה הבאה"
+                        className="hidden sm:flex z-20 items-center justify-center w-12 h-12 rounded-full bg-white text-gray-800 shadow-lg hover:bg-yellow-500 hover:text-gray-900 transition-all duration-300 transform translate-x-3 hover:scale-110 shrink-0"
+                    >
+                        <ChevronLeftIcon className="w-6 h-6" />
+                    </button>
+                </div>
+
+                {/* Mobile Navigation Controls & Dots */}
+                <div className="mt-8 flex items-center justify-center gap-6">
+                    <button 
+                        onClick={prevItem}
+                        aria-label="ההמלצה הקודמת"
+                        className="sm:hidden p-2.5 rounded-full bg-white text-gray-800 shadow-md active:bg-yellow-500 transition"
+                    >
+                        <ChevronRightIcon className="w-5 h-5" />
+                    </button>
+
+                    {/* Dot Indicators */}
+                    <div className="flex space-x-3 rtl:space-x-reverse">
+                        {TESTIMONIALS.map((_, index) => (
+                            <button 
+                                key={index}
+                                onClick={() => setCurrentIndex(index)}
+                                aria-label={`עבור להמלצה ${index + 1}`}
+                                className={`w-3.5 h-3.5 rounded-full transition-all duration-300 ${index === currentIndex ? 'bg-yellow-500 scale-125 w-8' : 'bg-gray-300 hover:bg-gray-400'}`}
+                            />
                         ))}
                     </div>
-                )}
+
+                    <button 
+                        onClick={nextItem}
+                        aria-label="ההמלצה הבאה"
+                        className="sm:hidden p-2.5 rounded-full bg-white text-gray-800 shadow-md active:bg-yellow-500 transition"
+                    >
+                        <ChevronLeftIcon className="w-5 h-5" />
+                    </button>
+                </div>
             </div>
         </section>
     );
