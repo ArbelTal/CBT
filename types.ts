@@ -6,3 +6,11 @@ export interface Project {
   imageUrl: string;
   category: string;
 }
+
+export interface Testimonial {
+  id: number;
+  name: string;
+  role?: string;
+  content: string;
+}
+

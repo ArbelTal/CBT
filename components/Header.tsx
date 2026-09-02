@@ -87,7 +87,7 @@ const Header: React.FC<HeaderProps> = ({ onHomeClick, onAboutClick, onPortfolioC
                     {/* Desktop Navigation */}
                     <nav className="hidden md:flex items-center gap-x-8">
                         <button onClick={onAboutClick} className={navLinkClasses}>אודות</button>
-                        <button onClick={onPortfolioClick} className={navLinkClasses}>תיק עבודות</button>
+                        <button onClick={onPortfolioClick} className={navLinkClasses}>המלצות</button>
                         <button onClick={onContactClick} className={navLinkClasses}>צור קשר</button>
                     </nav>
 
@@ -124,7 +124,7 @@ const Header: React.FC<HeaderProps> = ({ onHomeClick, onAboutClick, onPortfolioC
                     </button>
                     <button onClick={() => handleLinkClick(onPortfolioClick)} className={`${navLinkClasses} text-right py-2 flex items-center justify-start gap-x-4 w-full`}>
                         <PortfolioIcon className="w-6 h-6"/>
-                        <span>תיק עבודות</span>
+                        <span>המלצות</span>
                     </button>
                     <button onClick={() => handleLinkClick(onContactClick)} className={`${navLinkClasses} text-right py-2 flex items-center justify-start gap-x-4 w-full`}>
                         <ContactIcon className="w-6 h-6"/>
