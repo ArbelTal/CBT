@@ -128,15 +128,15 @@ const Portfolio: React.FC = () => {
     
     // Header for Testimonials
     const sectionHeader = (
-        <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-stone-800">המלצות</h2>
-            <p className="text-xl text-stone-600 mt-3 font-light">מילים חמות ממטופלים שליוויתי בתהליך</p>
-            <div className="w-16 h-1 bg-[#C98A68] mx-auto mt-5 rounded-full"></div>
+        <div className="text-center mb-8">
+            <h2 className="text-3xl sm:text-4xl font-bold text-stone-800">המלצות</h2>
+            <p className="text-lg sm:text-xl text-stone-600 mt-2 font-light">מילים חמות ממטופלים שליוויתי בתהליך</p>
+            <div className="w-16 h-1 bg-[#C98A68] mx-auto mt-4 rounded-full"></div>
         </div>
     );
 
     return (
-        <section id="portfolio" className="py-24 bg-[#F2EFEB] overflow-hidden">
+        <section id="portfolio" className="py-14 sm:py-16 bg-[#F2EFEB] overflow-hidden">
             <div className="container mx-auto px-4 sm:px-6 max-w-4xl">
                 {sectionHeader}
 
