@@ -26,36 +26,33 @@ const Contact: React.FC = () => {
     return (
         <section id="contact" className="py-20 bg-gray-800 text-white">
             <div className="container mx-auto px-6 text-center">
-                <h2 className="text-4xl font-bold mb-4">מוכנים להתחיל פרויקט חדש?</h2>
-                <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
-                    מוזמנים לפנות אליי בטלפון
-                </p>
-                <div className="flex flex-row justify-center items-start gap-x-4 sm:gap-x-6 w-full">
+                <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-white">מוזמנים לפנות אליי</h2>
+                <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-14 w-full max-w-4xl mx-auto">
                     {/* Phone Link */}
-                    <a href={`tel:${CONTACT_PHONE}`} className="flex flex-col items-center group text-center flex-1 max-w-[150px]">
-                        <div className="bg-yellow-500 p-3 rounded-full mb-2 transition-transform duration-300 group-hover:scale-110 text-gray-900">
-                           <PhoneIconSVG className="w-6 h-6" />
+                    <a href={`tel:${CONTACT_PHONE}`} className="flex flex-col items-center group text-center">
+                        <div className="bg-yellow-500 p-4 rounded-full mb-3 transition-transform duration-300 group-hover:scale-110 text-gray-900 shadow-md">
+                           <PhoneIconSVG className="w-7 h-7" />
                         </div>
-                        <span className="text-base font-semibold break-words">{CONTACT_PHONE}</span>
-                        <span className="text-yellow-400 font-semibold text-sm mt-1">התקשרו עכשיו</span>
+                        <span className="text-lg font-bold whitespace-nowrap text-white tracking-wide" dir="ltr">{CONTACT_PHONE}</span>
+                        <span className="text-yellow-400 font-semibold text-sm mt-1 whitespace-nowrap">התקשרו עכשיו</span>
                     </a>
 
                     {/* WhatsApp Link */}
-                    <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center group text-center flex-1 max-w-[150px]">
-                        <div className="bg-yellow-500 p-3 rounded-full mb-2 transition-transform duration-300 group-hover:scale-110 text-gray-900">
-                           <WhatsAppIconSVG className="w-6 h-6" />
+                    <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center group text-center">
+                        <div className="bg-yellow-500 p-4 rounded-full mb-3 transition-transform duration-300 group-hover:scale-110 text-gray-900 shadow-md">
+                           <WhatsAppIconSVG className="w-7 h-7" />
                         </div>
-                        <span className="text-base font-semibold break-words">{CONTACT_PHONE}</span>
-                        <span className="text-yellow-400 font-semibold text-sm mt-1">שלחו הודעה</span>
+                        <span className="text-lg font-bold whitespace-nowrap text-white tracking-wide" dir="ltr">{CONTACT_PHONE}</span>
+                        <span className="text-yellow-400 font-semibold text-sm mt-1 whitespace-nowrap">שלחו הודעה</span>
                     </a>
 
                     {/* Email Link */}
-                    <a href={`mailto:${CONTACT_EMAIL}`} className="flex flex-col items-center group text-center flex-1 max-w-[150px]">
-                        <div className="bg-yellow-500 p-3 rounded-full mb-2 transition-transform duration-300 group-hover:scale-110 text-gray-900">
-                           <EnvelopeIconSVG className="w-6 h-6" />
+                    <a href={`mailto:${CONTACT_EMAIL}`} className="flex flex-col items-center group text-center">
+                        <div className="bg-yellow-500 p-4 rounded-full mb-3 transition-transform duration-300 group-hover:scale-110 text-gray-900 shadow-md">
+                           <EnvelopeIconSVG className="w-7 h-7" />
                         </div>
-                        <span className="text-base font-semibold break-words w-full">{CONTACT_EMAIL}</span>
-                        <span className="text-yellow-400 font-semibold text-sm mt-1">שלחו מייל</span>
+                        <span className="text-lg font-bold whitespace-nowrap text-white tracking-wide" dir="ltr">{CONTACT_EMAIL}</span>
+                        <span className="text-yellow-400 font-semibold text-sm mt-1 whitespace-nowrap">שלחו מייל</span>
                     </a>
                 </div>
             </div>
